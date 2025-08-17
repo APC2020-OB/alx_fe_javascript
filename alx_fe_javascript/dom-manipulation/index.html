@@ -2,27 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Quote Generator with Storage</title>
+  <title>Dynamic Quote Generator</title>
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
 
-  <div id="quoteSection">
-    <p id="quoteDisplay">Click below to see a quote</p>
-    <p id="authorDisplay"></p>
-  </div>
+  <!-- Quote display area -->
+  <div id="quoteDisplay">Your random quote will appear here</div>
 
-  <button onclick="generateQuote()">Show Random Quote</button>
+  <!-- Button to show a random quote -->
+  <button id="newQuoteBtn">Show Random Quote</button>
 
+  <!-- Form to add a new quote -->
   <h2>Add a New Quote</h2>
-  <input type="text" id="newQuoteText" placeholder="Enter quote">
-  <input type="text" id="newQuoteAuthor" placeholder="Enter author">
-  <button onclick="addQuote()">Add Quote</button>
-
-  <h2>Import / Export Quotes</h2>
-  <button onclick="exportToJsonFile()">Export Quotes</button>
-  <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+  <form id="quoteForm">
+    <input type="text" id="quoteText" placeholder="Enter quote text" required>
+    <input type="text" id="quoteCategory" placeholder="Enter category" required>
+    <button type="submit">Add Quote</button>
+  </form>
 
   <script src="script.js"></script>
 </body>

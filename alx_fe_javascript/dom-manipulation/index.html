@@ -1,26 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dynamic Quote Generator</title>
+  <meta charset="UTF-8" />
+  <title>Dynamic Quote Generator — Sync & Conflicts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <h1>Dynamic Quote Generator</h1>
+  <header class="container">
+    <h1>Dynamic Quote Generator</h1>
+    <p class="subtitle">LocalStorage + Server Sync + Conflict Resolution</p>
+  </header>
 
-  <!-- Quote display area -->
-  <div id="quoteDisplay">Your random quote will appear here</div>
+  <main class="container">
+    <!-- NEW: Controls -->
+    <section class="controls card">
+      <div class="row">
+        <button id="btnSyncNow">Sync Now</button>
+        <label class="toggle">
+          <input type="checkbox" id="chkAutoSync" />
+          <span>Auto Sync every 30s</span>
+        </label>
+      </div>
+      <div id="syncStatus" class="status">Idle</div>
+    </section>
 
-  <!-- Button to show a random quote -->
-  <button id="newQuoteBtn">Show Random Quote</button>
+    <!-- Add Quote Form -->
+    <section class="card">
+      <h2>Add a Quote</h2>
+      <form id="quoteForm">
+        <input id="quoteText" type="text" placeholder="Quote text…" required />
+        <input id="quoteAuthor" type="text" placeholder="Author…" />
+        <button type="submit">Add</button>
+      </form>
+    </section>
 
-  <!-- Form to add a new quote -->
-  <h2>Add a New Quote</h2>
-  <form id="quoteForm">
-    <input type="text" id="quoteText" placeholder="Enter quote text" required>
-    <input type="text" id="quoteCategory" placeholder="Enter category" required>
-    <button type="submit">Add Quote</button>
-  </form>
+    <!-- NEW: Conflict Panel -->
+    <section id="conflictPanel" class="card hidden">
+      <h2>Conflicts Detected</h2>
+      <p class="muted">The same quote was edited in two places. By default, server wins. You can override below:</p>
+      <div id="conflictList" class="conflict-list"></div>
+    </section>
 
-  <script src="script.js"></script>
+    <!-- Quotes List -->
+    <section class="card">
+      <h2>Quotes</h2>
+      <ul id="quoteList" class="list"></ul>
+    </section>
+
+    <!-- Share -->
+    <section class="share card">
+      <a
+        id="tweetLink"
+        target="_blank"
+        rel="noopener"
+        href="https://twitter.com/intent/tweet?text=I%20just%20implemented%20data%20sync%20%2B%20conflict%20resolution%20in%20my%20Dynamic%20Quote%20Generator!%20%23ALX%20%23JavaScript"
+      >
+        🎉 Click here to Tweet this
+      </a>
+    </section>
+  </main>
+
+  <!-- Toasts -->
+  <div id="toasts" class="toasts"></div>
+
+  <script defer src="./script.js"></script>
 </body>
 </html>
